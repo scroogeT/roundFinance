@@ -81,6 +81,8 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -118,8 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
-STATIC_URL = os.path.join(BASE_DIR, "/static/")
+STATIC_ROOT = "/static/"
+STATIC_URL =  "/static/"
 
-LOGIN_REDIRECT_URL = "../"
-LOGIN_REDIRECT_URL = "/login"
+LOGIN_REDIRECT_URL = "/dash"
+#LOGIN_REDIRECT_URL = "/login"

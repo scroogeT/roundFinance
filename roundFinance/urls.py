@@ -25,5 +25,7 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^about/$', views.about, name="about"),
     url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^logout/$', auth_views.logout,{'next_page': '/'}, name='logout'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url('^', include('django.contrib.auth.urls')),
 ]
