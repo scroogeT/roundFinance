@@ -25,7 +25,7 @@ SECRET_KEY = '=m@knam3df_)i02fcn)n$w4a1hf+m05@0xf#r$(2c&ww97-^(j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["round.co.zw","beta.round.co.zw","127.0.0.1"]
 
 
 # Application definition
