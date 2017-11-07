@@ -25,7 +25,7 @@ SECRET_KEY = '=m@knam3df_)i02fcn)n$w4a1hf+m05@0xf#r$(2c&ww97-^(j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'public',
+    'dash',
 ]
 
 MIDDLEWARE = [
@@ -120,8 +122,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = "/static/"
-STATIC_URL =  "/static/"
+STATIC_URL = '/static/'
+
+# Add these new lines to fix static files bugs
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL = "/dash"
 #LOGIN_REDIRECT_URL = "/login"
