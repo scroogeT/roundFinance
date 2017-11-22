@@ -1,0 +1,22 @@
+{% extends 'public/base.html' %}
+
+{% block title %}
+    Borrower's List
+{% endblock %}
+
+{% block content %}
+     {% if borrowers %}
+        <div class="list-group">
+          {% for borrower in borrowers %}
+              <div class="row">
+                <div class="col-md-8">
+                    <a href="{% url 'borrowerProfile' %}" class="list-group-item">{{ borrower.borrower }}<span class="badge">{{ borrower.amount }}</span></a>
+                </div>
+                <div class="col-4">
+                    <a class="btn btn-success">Lend Money</a>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+     {% endif %}
+{% endblock %}

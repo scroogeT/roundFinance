@@ -16,16 +16,22 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from public import views
+from public import views as public_views
+from dash import views as dash_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^dash/', include('dash.urls')),
-    url(r'^$', views.home, name="home"),
-    url(r'^contact/$', views.contact, name="contact"),
-    url(r'^about/$', views.about, name="about"),
+    url(r'^dash/', dash_views.index, name="dashboard"),
+    url(r'^$', public_views.home, name="home"),
+    url(r'^contact/$', public_views.contact, name="contact"),
+    url(r'^about/$', public_views.about, name="about"),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout,{'next_page': '/'}, name='logout'),
-    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^signup/$', public_views.signup, name='signup'),
+    url(r'^profile/', dash_views.profile, name="profile"),
+    url(r'^borrowerProfile/', dash_views.borrowerProfile, name="borrowerProfile"),
+    url(r'^borrowerList/', dash_views.borrowerList, name="borrowerList"),
+    url(r'^borrowerFunds/', dash_views.borrowFunds, name="borrowFunds"),
+    url(r'^account_history/', dash_views.account_history, name="history"),
     url('^', include('django.contrib.auth.urls')),
 ]

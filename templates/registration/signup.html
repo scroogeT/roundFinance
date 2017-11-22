@@ -1,21 +1,36 @@
 {% extends 'public/base.html' %}
 
+{% block title %}
+    signup
+{% endblock %}
+
 {% block content %}
   <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
+
+
+    <div class="col-md-4 centered">
+        <div class="card" style="width:400px">
+      <img class="card-img-top" src="{{ myInfo.proofOfID }}" alt="Card image">
+      <div class="card-body">
+            <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+              <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                  <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                  <p style="color: red">{{ error }}</p>
+                {% endfor %}
+              </p>
+            {% endfor %}
+            <button class="btn btn-success" type="submit">Sign Up</button>
+            <a class="btn btn-primary" href="{% url 'login' %}" >Go To Login</a>
+
+          </form>
+      </div>
+    </div>
+    </div>
 {% endblock %}
