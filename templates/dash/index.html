@@ -17,24 +17,24 @@
 
      <div class="row">
          <!--borrowings summary-->
-      {% if myDebts %}
+      {% if myDebt %}
             <div class="col-md-6" style="padding-left: 3%">
                 <h1>Borrowings</h1>
-                 {% for myDebt in myDebts %}
+
                         <div class="centered">
                             <div class="card" style="width:98%">
                               <div class="card-body">
-                                    <p>
-                                        amount borrowed : {{ myDebt.amount }},<br>
-                                        lender: {{ myDebt.lender }},<br>
-                                        amount paid: {{ myDebt.amountPaid }},<br>
-                                        due date: {{myDebt.dueDate  }},
-
-                                    </p>
+                                  <h4>amount borrowed : <strong>${{ myDebt.amount }}</strong></h4>
+                                  <h4>lender: <strong>{{ myDebt.lender }}</strong></h4>
+                                  <h4>amount paid: <strong>{{ myDebt.amountPaid }}</strong></h4>
+                                  <h4>due date: <strong>{{myDebt.dueDate  }}</strong></h4>
+                                      {% if not myArrears.received3 %}
+                                        <a class="btn btn-primary btn-block" href="{% url 'debtPayment' myArrears.pk %}"> Pay Debt Installments</a>
+                                      {% endif %}
                               </div>
                             </div>
                         </div>
-                 {% endfor %}
+
 
             </div>
       {% endif %}
@@ -53,6 +53,7 @@
                             <th>Amount ($)</th>
                             <th>Due Date</th>
                             <th>Status</th>
+                            <th>More..</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,7 @@
                                     <td>{{ myCredit.amount }}</td>
                                     <td>{{ myCredit.dueDate }}</td>
                                     <td>{{ myCredit.status }}</td>
+                                    <td><a class="btn btn-success" href="{% url 'creditDetail' myCredit.pk %}">Details</a></td>
                                 </tr>
                           {% endfor %}
 

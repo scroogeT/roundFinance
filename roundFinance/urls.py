@@ -28,10 +28,17 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout,{'next_page': '/'}, name='logout'),
     url(r'^signup/$', public_views.signup, name='signup'),
-    url(r'^profile/', dash_views.profile, name="profile"),
+    url(r'^profile/', dash_views.profileView.as_view(), name="profile"),
+    url(r'^(?P<member_pk>\d+)/edit$', dash_views.updateProfile.as_view(), name="editProfile"),
     url(r'^borrowerProfile/', dash_views.borrowerProfile, name="borrowerProfile"),
     url(r'^borrowerList/', dash_views.borrowerList, name="borrowerList"),
-    url(r'^borrowerFunds/', dash_views.borrowFunds, name="borrowFunds"),
+    url(r'^borrowerFunds/', dash_views.newDebt.as_view(), name="borrowFunds"),
+
+    url(r'^creditDetail/(?P<pk>\d+)/$', dash_views.creditDetail, name="creditDetail"),
+
+    url(r'^paybackDebt1/(?P<trans_pk>\d+)/$', dash_views.debtPayment.as_view(), name="debtPayment"),
+    url(r'^receivePayment/(?P<trans_pk>\d+)/$', dash_views.receivePayment.as_view(), name="receivePayment"),
+
     url(r'^account_history/', dash_views.account_history, name="history"),
     url('^', include('django.contrib.auth.urls')),
 ]

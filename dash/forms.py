@@ -6,6 +6,4 @@ from .models import transactions
 class transactionsForm(forms.ModelForm):
     class Meta:
         model = transactions
-        fields = ('amount','descriptionOfUse')
-
-#class transactionUpdate
+        fields = ('amount','interestRate','descriptionOfUse')

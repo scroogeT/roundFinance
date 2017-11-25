@@ -1,0 +1,10 @@
+{% extends 'public/base.html' %}
+
+{% block title %}
+    Payback Debt
+{% endblock %}
+
+{% block content %}
+    Credit Detail
+    <a class="btn btn-primary" href="{% url 'receivePayment' myArrears.pk %}"> Accept Debt Payments</a>
+{% endblock %}
